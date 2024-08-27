@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SW.Tools</RootNamespace>
     <AssemblyName>SW.Tools</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -33,23 +33,23 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="BouncyCastle.Crypto, Version=1.8.9.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
-      <HintPath>..\packages\BouncyCastle.1.8.9\lib\BouncyCastle.Crypto.dll</HintPath>
+    <Reference Include="BouncyCastle.Cryptography, Version=2.0.0.0, Culture=neutral, PublicKeyToken=072edcf4a5328938, processorArchitecture=MSIL">
+      <HintPath>..\packages\BouncyCastle.Cryptography.2.4.0\lib\net461\BouncyCastle.Cryptography.dll</HintPath>
     </Reference>
     <Reference Include="cadenaoriginal33, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\cadenaoriginal33.dll.1.4.3\lib\net40\cadenaoriginal33.dll</HintPath>
+      <HintPath>..\..\FacturabilidadDotNet\packages\cadenaoriginal33.dll.1.4.3\lib\net40\cadenaoriginal33.dll</HintPath>
     </Reference>
     <Reference Include="cadenaoriginal40, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\cadenaoriginal40.dll.0.0.4.2-rc\lib\net40\cadenaoriginal40.dll</HintPath>
+      <HintPath>..\..\FacturabilidadDotNet\packages\cadenaoriginal40.dll.0.0.4.1\lib\net40\cadenaoriginal40.dll</HintPath>
     </Reference>
     <Reference Include="cadenaoriginalretenciones20, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\cadenaoriginalRetenciones20.dll.1.0.1\lib\cadenaoriginalretenciones20.dll</HintPath>
+      <HintPath>..\..\FacturabilidadDotNet\packages\cadenaoriginalRetenciones20.dll.1.0.1\lib\cadenaoriginalretenciones20.dll</HintPath>
     </Reference>
     <Reference Include="cadenaoriginalTFD11, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\cadenaoriginalTFD11.dll.1.0.5\lib\net40\cadenaoriginalTFD11.dll</HintPath>
+      <HintPath>..\..\FacturabilidadDotNet\packages\cadenaoriginalTFD11.dll.1.0.5\lib\net40\cadenaoriginalTFD11.dll</HintPath>
     </Reference>
     <Reference Include="Gma.QrCodeNet.Encoding, Version=0.4.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Gma.QrCodeNet.0.4.1.2\lib\net40\Gma.QrCodeNet.Encoding.dll</HintPath>
+      <HintPath>..\..\FacturabilidadDotNet\packages\Gma.QrCodeNet.0.4.1.2\lib\net40\Gma.QrCodeNet.Encoding.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

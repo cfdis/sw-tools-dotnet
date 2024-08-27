@@ -446,7 +446,7 @@ namespace SW.Tools.Cfdi
         }
 
         public void SetComprobante(string moneda, string tipoDeComprobante, string formaPago, string metodoPago,
-            string lugarExpedicion,string exportacion, string serie = null, string folio = null, string condicionesDePago = null, decimal tipoCambio = 0, string confirmacion = null)
+            string lugarExpedicion,string exportacion, DateTime? fecha = null, string serie = null, string folio = null, string condicionesDePago = null, decimal tipoCambio = 0, string confirmacion = null)
         {
             this.Serie = serie;
             this.Folio = folio;
@@ -462,7 +462,7 @@ namespace SW.Tools.Cfdi
             this.TipoCambioSpecified = tipoCambio != 0 ? true : false;
             this.TipoCambio = tipoCambio;
             this.Exportacion = exportacion;
-            this.Fecha= DateTime.Now.CentralTime();
+            this.Fecha= fecha ?? DateTime.Now.CentralTime();
         }
 
         public void SetInformacionGlobal(string periodicidad, string meses, string anio)
@@ -501,10 +501,10 @@ namespace SW.Tools.Cfdi
         {
             if (this.TipoDeComprobante == "I" || this.TipoDeComprobante == "E" || this.TipoDeComprobante == "N")
             {
-                this.SubTotal = this.Conceptos.Sum(a => a.Importe).TruncateDecimals(this.Moneda_Info.Decimales);
+                this.SubTotal = Math.Round(this.Conceptos.Sum(a => a.Importe), this.Moneda_Info.Decimales);
                 if (this.Conceptos != null && this.Conceptos.Any(a => a.DescuentoSpecified))
                 {
-                    this.Descuento = this.Conceptos.Sum(a => a.Descuento).TruncateDecimals(this.Moneda_Info.Decimales);
+                    this.Descuento = Math.Round(this.Conceptos.Sum(a => a.Descuento), this.Moneda_Info.Decimales);
                     this.DescuentoSpecified = true;
                 }
             }
@@ -512,14 +512,17 @@ namespace SW.Tools.Cfdi
                 this.SubTotal = 0;
             decimal totalCalculado = 0;
             totalCalculado = this.SubTotal - this.Descuento;
-            if (this.Impuestos != null)
-                totalCalculado = (totalCalculado + this.Impuestos.TotalImpuestosTrasladados) - this.Impuestos.TotalImpuestosRetenidos;
             this.Total = totalCalculado;
 
             if (this.Impuestos != null)
             {
                 if (this.Impuestos.Traslados != null && this.Impuestos.Traslados.Count() > 0)
                 {
+                    foreach (var traslado in this.Impuestos.Traslados)
+                    {
+                        traslado.Base = Math.Round(traslado.Base, this.Moneda_Info.Decimales);
+                        traslado.Importe = Math.Round(traslado.Importe, this.Moneda_Info.Decimales);
+                    }
                     int countTasa = this.Impuestos.Traslados.Count(a => a.TipoFactor.Trim().ToLower() == "tasa");
                     int countExento = this.Impuestos.Traslados.Count(a => a.TipoFactor.Trim().ToLower() == "exento");
                     if (countTasa <= 0 && countExento >= 1)
@@ -539,9 +542,13 @@ namespace SW.Tools.Cfdi
 
                 if (this.Impuestos.Retenciones != null && this.Impuestos.Retenciones.Length > 0)
                 {
+                    foreach(var retencion in this.Impuestos.Retenciones)
+                    {
+                        retencion.Importe = Math.Round(retencion.Importe, this.Moneda_Info.Decimales);
+                    }
                     this.Impuestos.TotalImpuestosRetenidos = this.Impuestos.Retenciones.Sum(a => a.Importe);
                     this.Impuestos.TotalImpuestosRetenidosSpecified = true;
-                    this.Total -= this.Impuestos.TotalImpuestosTrasladados;
+                    this.Total -= this.Impuestos.TotalImpuestosRetenidos;
                 }
             }
             return this;

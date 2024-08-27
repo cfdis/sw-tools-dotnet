@@ -320,6 +320,11 @@ namespace SW.Tools.Cfdi.Complementos.Pagos20
             this.versionField = "2.0";
             this.invoice = new Comprobante();
         }
+        public Pagos(Comprobante comprobanteInvoice)
+        {
+            this.versionField = "2.0";
+            this.invoice = comprobanteInvoice;
+        }
 
         public void SetEmisor(string rfc, string nombre, string regimenFiscal)
         {
@@ -365,6 +370,24 @@ namespace SW.Tools.Cfdi.Complementos.Pagos20
             invoice.Conceptos = new ComprobanteConcepto[1];
             invoice.Conceptos[0] = new ComprobanteConcepto()
             { ClaveProdServ = "84111506", Cantidad = 1, ClaveUnidad = "ACT", Descripcion = "Pago", ValorUnitario = 0, Importe = 0, ObjetoImp = objetoimp };
+            var xmlPagos = SerializerP.SerializeDocument(this);
+            XmlDocument doc = new XmlDocument();
+            doc.LoadXml(xmlPagos);
+            invoice.SetComplemento(doc.DocumentElement);
+            return invoice;
+        }
+
+        public Comprobante GetInvoice()
+        {
+            invoice.TipoDeComprobante = "P";
+            invoice.SubTotal = 0;
+            invoice.Moneda = "XXX";
+            invoice.Total = 0;
+            invoice.Fecha = DateTime.Now.CentralTime();
+            invoice.Exportacion = "01";
+            invoice.Conceptos = new ComprobanteConcepto[1];
+            invoice.Conceptos[0] = new ComprobanteConcepto()
+            { ClaveProdServ = "84111506", Cantidad = 1, ClaveUnidad = "ACT", Descripcion = "Pago", ValorUnitario = 0, Importe = 0, ObjetoImp = "01" };
             var xmlPagos = SerializerP.SerializeDocument(this);
             XmlDocument doc = new XmlDocument();
             doc.LoadXml(xmlPagos);

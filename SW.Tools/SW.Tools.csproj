@@ -76,6 +76,9 @@
     <Compile Include="Entities\Cancelacion\AceptacionRechazoRespuesta.cs" />
     <Compile Include="Entities\Cancelacion\Cancelacion.cs" />
     <Compile Include="Entities\Cancelacion\CancelacionMotivo.cs" />
+    <Compile Include="Entities\CFDI\Complementos\ComercioExterior20\ComercioExterior20.cs" />
+    <Compile Include="Entities\CFDI\Complementos\ComercioExterior20\ComercioExterior20_build.cs" />
+    <Compile Include="Entities\CFDI\Complementos\ComercioExterior20\ComercioExterior20_Serielizer.cs" />
     <Compile Include="Entities\CFDI\Complementos\Pagos20\Pagos20.cs" />
     <Compile Include="Entities\CFDI\Complementos\Pagos20\Pagos20_build.cs" />
     <Compile Include="Entities\CFDI\Complementos\Pagos20\Pagos20_Serializer.cs" />

@@ -35,7 +35,7 @@ namespace SW.Tools.Helpers
                             XmlElement element = complemento.Any[i];
                             switch (element.Name.ToLower())
                             {
-
+                                
                                 case "detallista:detallista":
                                     schemaValues += " http://www.sat.gob.mx/detallista http://www.sat.gob.mx/sitio_internet/cfd/detallista/detallista.xsd";
                                     ns.Add("detallista", "http://www.sat.gob.mx/detallista");
@@ -143,6 +143,10 @@ namespace SW.Tools.Helpers
                                 case "pago20:pagos":
                                     schemaValues += " http://www.sat.gob.mx/Pagos20 http://www.sat.gob.mx/sitio_internet/cfd/Pagos/Pagos20.xsd";
                                     ns.Add("pago20", "http://www.sat.gob.mx/Pagos20");
+                                    break;
+                                case "cce20:comercioexterior":
+                                    schemaValues += " http://www.sat.gob.mx/ComercioExterior20 http://www.sat.gob.mx/sitio_internet/cfd/ComercioExterior20/ComercioExterior20.xsd";
+                                    ns.Add("cce20", "http://www.sat.gob.mx/ComercioExterior20");
                                     break;
                             }
                         }

@@ -34,22 +34,22 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="BouncyCastle.Cryptography, Version=2.0.0.0, Culture=neutral, PublicKeyToken=072edcf4a5328938, processorArchitecture=MSIL">
-      <HintPath>..\packages\BouncyCastle.Cryptography.2.4.0\lib\net461\BouncyCastle.Cryptography.dll</HintPath>
+      <HintPath>..\..\packages\BouncyCastle.Cryptography.2.4.0\lib\net461\BouncyCastle.Cryptography.dll</HintPath>
     </Reference>
     <Reference Include="cadenaoriginal33, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\FacturabilidadDotNet\packages\cadenaoriginal33.dll.1.4.3\lib\net40\cadenaoriginal33.dll</HintPath>
+      <HintPath>..\..\packages\cadenaoriginal33.dll.1.4.3\lib\net40\cadenaoriginal33.dll</HintPath>
     </Reference>
     <Reference Include="cadenaoriginal40, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\FacturabilidadDotNet\packages\cadenaoriginal40.dll.0.0.4.1\lib\net40\cadenaoriginal40.dll</HintPath>
+      <HintPath>..\..\packages\cadenaoriginal40.dll.0.0.4.1\lib\net40\cadenaoriginal40.dll</HintPath>
     </Reference>
     <Reference Include="cadenaoriginalretenciones20, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\FacturabilidadDotNet\packages\cadenaoriginalRetenciones20.dll.1.0.1\lib\cadenaoriginalretenciones20.dll</HintPath>
+      <HintPath>..\..\packages\cadenaoriginalRetenciones20.dll.1.0.1\lib\cadenaoriginalretenciones20.dll</HintPath>
     </Reference>
     <Reference Include="cadenaoriginalTFD11, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\FacturabilidadDotNet\packages\cadenaoriginalTFD11.dll.1.0.5\lib\net40\cadenaoriginalTFD11.dll</HintPath>
+      <HintPath>..\..\packages\cadenaoriginalTFD11.dll.1.0.5\lib\net40\cadenaoriginalTFD11.dll</HintPath>
     </Reference>
     <Reference Include="Gma.QrCodeNet.Encoding, Version=0.4.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\FacturabilidadDotNet\packages\Gma.QrCodeNet.0.4.1.2\lib\net40\Gma.QrCodeNet.Encoding.dll</HintPath>
+      <HintPath>..\..\packages\Gma.QrCodeNet.0.4.1.2\lib\net40\Gma.QrCodeNet.Encoding.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -132,9 +132,6 @@
     <Compile Include="Services\Sign\SignService.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Catalogs\CatalogosTXT\catCFDI_Moneda.txt" />
     <EmbeddedResource Include="Resources\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -142,7 +139,9 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

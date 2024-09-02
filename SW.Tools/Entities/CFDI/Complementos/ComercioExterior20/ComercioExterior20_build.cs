@@ -25,6 +25,12 @@ namespace SW.Tools.Cfdi.Complementos.ComercioExterior20
             if (invoice.Exportacion == "01" || invoice.Exportacion == "03")
                 return invoice;
             invoice.InformacionGlobal = null;
+            decimal totalUsd = 0;
+            var mercanciasList = this.Mercancias?.ToList();
+            mercanciasList.ForEach(mercancia => {
+                totalUsd += mercancia.ValorDolares;
+            });
+            this.TotalUSD = Math.Round(totalUsd, 2);
             var xmlComercioExterior = SerializerCE.SerializeDocument(this);
             XmlDocument doc = new XmlDocument();
             doc.LoadXml(xmlComercioExterior);
@@ -38,13 +44,12 @@ namespace SW.Tools.Cfdi.Complementos.ComercioExterior20
         }
 
         public void SetComercioExterior(string claveDePedimento, int certificadoOrigen, decimal tipoCambioUSD,
-        decimal totalUSD, string motivoTraslado, string numCertificadoOrigen, string numeroExportadorConfiable,
+        string motivoTraslado, string numCertificadoOrigen, string numeroExportadorConfiable,
         string incoterm, string observaciones)
         {
             this.ClaveDePedimento = claveDePedimento;
             this.CertificadoOrigen = certificadoOrigen;
             this.TipoCambioUSD = tipoCambioUSD;
-            this.TotalUSD = totalUSD;
             this.MotivoTraslado = motivoTraslado;
             this.MotivoTrasladoSpecified = !String.IsNullOrEmpty(motivoTraslado);
             this.NumCertificadoOrigen = numCertificadoOrigen;
